@@ -1,0 +1,119 @@
+@font-face {
+  font-family: "GeistMono-Regular";
+  src: url("../nonogram/GeistMono-Regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+body {
+  font-family: "GeistMono-Regular", sans-serif;
+  background-color: #a9c2f9;
+  background-image: url("../nonographic/hobbykit-1.png");
+  background-size: auto 80vh;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  height: 100vh;
+  display: flex;
+  margin: 0;
+  overflow: scroll;
+}
+.start-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.tutorial-btn {
+  background-color: transparent;
+  border: none;
+  z-index: 300;
+  bottom: 2vh;
+  right: 2vw;
+  position: fixed;
+}
+.game-selection-btn {
+  background-color: transparent;
+  border: none;
+  z-index: 100;
+  bottom: 2vh;
+  left: 2vw;
+  position: fixed;
+}
+.tutorial-btn img,
+.game-selection-btn img,
+.prev-btn img {
+  height: 3vh;
+  transition: transform 0.3s ease;
+  opacity: 1;
+}
+.game-selection-btn img[src$="02.png"],
+.tutorial-btn img[src$="02.png"] {
+  width: auto !important; /* game02.png 및 tutorial02.png 이미지의 폭을 조정합니다. */
+  height: 4vh !important; /* 이미지 높이를 자동으로 조정합니다. */
+}
+
+.prev-btn {
+  background-color: transparent;
+  border: none;
+  z-index: 100;
+  top: 2vh;
+  left: 2vw;
+  position: fixed;
+}
+
+.tutorial-btn:hover img,
+.game-selection-btn:hover img {
+  transform: scale(1.1);
+  opacity: 1;
+}
+
+.prev-btn:hover img {
+  transform: scale(1.2);
+  opacity: 1;
+}
+
+#overlaytutorial {
+  z-index: 1000;
+  display: none;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(153, 153, 153, 0);
+  width: auto;
+  height: 100%;
+  opacity: 0.8;
+}
+#popuptutorial {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #ffffff;
+  width: 50vw;
+  height: 50vw;
+  z-index: 2000;
+}
+#popupclosetutorial {
+  float: right;
+  padding: 1vh;
+  cursor: pointer;
+}
+.popupcontenttutorial {
+  padding: 1vh;
+}
+#buttontutorial {
+  cursor: pointer;
+}
+.video-img {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30vw;
+  height: auto;
+  z-index: 1000;
+}

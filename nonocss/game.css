@@ -1,0 +1,403 @@
+@font-face {
+  font-family: "GeistMono-Regular";
+  src: url("../nonogram/GeistMono-Regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "GeistMono-Black";
+  src: url("../nonogram/GeistMono-Black.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+body {
+  background-color: #a9c2f9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  overflow-x: scroll;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  -ms-user-drag: none;
+  user-drag: none;
+
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.brush-btn:hover,
+.x-btn:hover,
+.zoom-in-btn:hover,
+.zoom-out-btn:hover {
+  background-color: #ffffff;
+  mix-blend-mode: difference;
+}
+.back-to-start-btn img[src$="02.png"],
+.tutorial-btn img[src$="02.png"],
+.hint-btn img[src$="02.png"] {
+  width: auto !important; /* game02.png 및 tutorial02.png 이미지의 폭을 조정합니다. */
+  height: 4vh !important; /* 이미지 높이를 자동으로 조정합니다. */
+}
+.tutorial-btn img,
+.back-to-start-btn img,
+.prev-btn img,
+.hint-btn img {
+  height: 3vh;
+  transition: transform 0.3s ease;
+  opacity: 1;
+}
+.tutorial-btn:hover img,
+.back-to-start-btn:hover img,
+.hint-btn:hover img {
+  transform: scale(1.1);
+  opacity: 1;
+}
+
+.prev-btn:hover img {
+  transform: scale(1.2);
+  opacity: 1;
+}
+.tutorial-btn {
+  background-color: transparent;
+  border: none;
+  z-index: 300;
+  bottom: 1vh;
+  right: 2vw;
+  position: fixed;
+}
+.back-to-start-btn {
+  background-color: transparent;
+  border: none;
+  z-index: 100;
+  bottom: 1vh;
+  left: 2vw;
+  position: fixed;
+}
+.tutorial-btn img,
+.back-to-start-btn img,
+.prev-btn img,
+.hint-btn img {
+  height: 3vh;
+  transition: transform 0.3s ease;
+  opacity: 1;
+}
+
+.prev-btn {
+  z-index: 2000;
+  background-color: transparent;
+  border: none;
+  z-index: 100;
+  top: 1vh;
+  left: 2vw;
+  position: fixed;
+}
+
+.hint-btn {
+  z-index: 2000;
+  background-color: transparent;
+  border: none;
+
+  top: 1vh;
+  right: 2vw;
+  position: fixed;
+}
+
+.game-screen {
+  z-index: 100;
+  background-color: transparent;
+  font-family: "GeistMono-Regular";
+  height: 70vh; /* 높이를 화면 높이의 70%로 설정 */
+  width: 100%;
+  margin-top: 5vh; /* 상단 여백을 화면 높이의 5%로 설정 */
+  margin-left: auto;
+}
+
+.thumbnail {
+  z-index: 1;
+  background-color: #a9c2f9;
+
+  grid-area: thumbnail;
+  display: grid;
+  aspect-ratio: var(--col_size) / var(--row_size);
+  grid-template-columns: repeat(var(--col_size), 1fr);
+  grid-template-rows: repeat(var(--row_size), 1fr);
+  gap: 0px;
+}
+.thumbnail-pixel {
+  background-color: transparent;
+  aspect-ratio: 1;
+  opacity: 1;
+  transition: background-color 0.1s ease;
+}
+.container {
+  z-index: 1;
+  background: #a9c2f9;
+
+  grid-area: container;
+  display: grid;
+  aspect-ratio: var(--col_size) / var(--row_size);
+  grid-template-columns: repeat(var(--col_size), 1fr);
+  grid-template-rows: repeat(var(--row_size), 1fr);
+  gap: 1px;
+  position: relative;
+}
+.pixel {
+  box-sizing: border-box;
+}
+
+.row-clues {
+  grid-area: row-clues;
+  background-color: transparent;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  font-size: var(--font_size); /* 폰트 크기를 화면 높이의 2%로 설정 */
+}
+
+.row-clue {
+  color: #414141;
+
+  flex: 1;
+  display: flex;
+  font-family: "GeistMono-Regular";
+  text-align: right;
+  font-size: inherit;
+  margin-right: 0.7vw; /* 오른쪽 여백을 화면 너비의 0.7%로 설정 */
+  margin-top: 0.1vh; /* 상단 여백을 화면 높이의 0.1%로 설정 */
+}
+.row-clue span {
+  margin-left: 0.7vw; /* 왼쪽 여백을 화면 너비의 0.7%로 설정 */
+}
+.col-clues {
+  grid-area: col-clues;
+  background-color: transparent;
+  width: 100%;
+
+  gap: 0.1vh; /* 갭을 화면 높이의 0.1%로 설정 */
+  display: flex;
+  flex-direction: row;
+  font-size: var(--font_size); /* 폰트 크기를 화면 높이의 2%로 설정 */
+}
+
+.col-clue {
+  color: #414141;
+  font-family: "GeistMono-Regular";
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: inherit;
+  line-height: 100%;
+  flex: 1;
+  align-self: flex-end;
+}
+.game {
+  background-color: transparent;
+  margin: auto auto;
+  width: 80vw; /* 너비를 화면 너비의 80%로 설정 */
+  height: auto;
+
+  position: relative;
+
+  display: grid;
+  grid-template-areas:
+    "thumbnail col-clues"
+    "row-clues container";
+  grid-template-rows: 20% 80%;
+  grid-template-columns: 20% 80%;
+  gap: 0px;
+  /*확대 축소*/
+  transition: transform 0.2s ease-out;
+  transform-origin: center center;
+  cursor: grab;
+  user-drag: none;
+}
+
+.game:active {
+  cursor: grabbing;
+}
+
+.pixel {
+  background-color: #a9c2f9;
+  border: 0.1vh solid #414141; /* 테두리를 화면 높이의 0.1%로 설정 */
+  border-radius: 0.1vw; /* 테두리 반경을 화면 너비의 0.1%로 설정 */
+  aspect-ratio: 1;
+  position: relative;
+  transition: background-color 0.3s ease;
+}
+.pixel.x {
+  background-color: #a9c2f9;
+
+  z-index: 100;
+  aspect-ratio: 1;
+  transition: 0.3s ease;
+}
+
+.pixel.active.transparent {
+  opacity: 0.3; /* 브러쉬 투명도 설정 (0~1 사이의 값) */
+  filter: blur(0.1vw);
+}
+.setting-btn {
+  z-index: -100;
+
+  position: fixed;
+  bottom: 50px;
+  right: 5px;
+
+  font-size: 15px;
+  background-color: transparent;
+  border: none;
+
+  color: transparent;
+  cursor: pointer;
+  display: flex;
+
+  margin-left: -40px;
+}
+
+.brush-board {
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+
+  flex-direction: column;
+  position: fixed;
+  bottom: 40vh;
+  right: 1vw;
+  transform: translateY(50%);
+  transform: none; /* 회전 스타일 제거 */
+  transform-origin: initial;
+}
+
+.brush-board .button-img {
+  width: 2vw;
+  height: auto;
+  cursor: pointer;
+}
+.brush-btn,
+.x-btn,
+.zoom-in-btn,
+.zoom-out-btn {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 0.5vw;
+  margin-bottom: 0.5vh;
+}
+
+#overlaytutorial {
+  z-index: 1000;
+  display: none;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(153, 153, 153, 0);
+  width: auto;
+  height: 50vh;
+  opacity: 0.8;
+}
+#popuptutorial {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #ffffff;
+  width: 40vw;
+  height: 40vh;
+  z-index: 2000;
+}
+#popupclosetutorial {
+  float: right;
+  padding: 1vh;
+  cursor: pointer;
+  z-index: 3000;
+}
+.popupcontenttutorial {
+  padding: 1vh;
+}
+#buttontutorial {
+  cursor: pointer;
+}
+
+#overlaysolve {
+  z-index: 1000;
+  display: none;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(153, 153, 153, 0);
+  width: auto;
+  height: 50vh;
+  opacity: 0.8;
+}
+#popupsolve {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgb(255, 255, 255);
+  width: 40vw;
+  height: 40vh;
+  z-index: 2000;
+}
+#popupclosesolve {
+  float: right;
+  padding: 1vh;
+  cursor: pointer;
+}
+.popupcontentsolve {
+  padding: 1vh;
+}
+#buttonsolve {
+  cursor: pointer;
+}
+
+.popup-image {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20vw;
+  height: auto;
+  z-index: 2000;
+}
+
+.popupcontentsolve h1 {
+  font-family: "GeistMono-Black";
+
+  font-size: 10px;
+  color: #414141;
+  position: fixed;
+  top: 2vh;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2000;
+}
+.video-img {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30vw;
+  height: auto;
+  z-index: 1000;
+}

@@ -1,0 +1,409 @@
+@font-face {
+  font-family: "GeistMono-Regular";
+  src: url("../nonogram/GeistMono-Regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "GeistMono-Regular";
+  src: url("../nonogram/GeistMono-UltraBlack.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+body {
+  font-family: "GeistMono-Regular", sans-serif;
+  background-color: #a9c2f9;
+  background-image: url("../nonographic/hobbykit-1.png");
+  background-size: auto 80vh; /* 배경 이미지를 가로는 자동, 세로는 900px로 설정 */
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  display: flex;
+  margin: 0;
+  overflow: scroll;
+}
+.container-wrapper {
+  display: flex;
+}
+
+.game-selection-screen {
+  background-color: transparent;
+  margin-top: 1vh;
+  margin-bottom: 3vh;
+  margin-left: auto;
+  z-index: 30;
+  overflow-y: auto;
+  width: 15vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.graphic-container {
+  background-color: transparent;
+
+  flex: 1;
+  width: 70vw;
+  height: 100%;
+
+  margin-top: auto;
+  margin-right: auto;
+  overflow-y: auto;
+}
+
+.tutorial-btn {
+  background-color: transparent;
+  border: none;
+  z-index: 300;
+  bottom: 1vh;
+  right: 2vw;
+  position: fixed;
+}
+.back-to-start-btn {
+  background-color: transparent;
+  border: none;
+  z-index: 100;
+  bottom: 1vh;
+  left: 2vw;
+  position: fixed;
+}
+
+.back-to-start-btn img[src$="02.png"],
+.tutorial-btn img[src$="02.png"] {
+  width: auto !important; /* game02.png 및 tutorial02.png 이미지의 폭을 조정합니다. */
+  height: 4vh !important; /* 이미지 높이를 자동으로 조정합니다. */
+}
+
+.prev-btn {
+  background-color: transparent;
+  border: none;
+  z-index: 100;
+  top: 1vh;
+  left: 2vw;
+  position: fixed;
+}
+
+.game-btn:hover {
+  background-color: #a9c2f9;
+  mix-blend-mode: difference;
+}
+
+.tutorial-btn img,
+.back-to-start-btn img,
+.prev-btn img {
+  height: 3vh;
+  transition: transform 0.3s ease;
+  opacity: 1;
+}
+
+.tutorial-btn:hover img,
+.back-to-start-btn:hover img {
+  transform: scale(1.1);
+  opacity: 1;
+}
+
+.prev-btn:hover img {
+  transform: scale(1.2);
+  opacity: 1;
+}
+.game-btn {
+  mix-blend-mode: difference;
+  background-color: transparent;
+  font-family: "Geistmono-Regular", sans-serif;
+  margin-left: 5vw;
+  background-color: #fff;
+  border: 2px solid #553d00;
+  border-radius: 50%;
+
+  cursor: pointer;
+  font-size: 2vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 2vh 2vw;
+  color: #553d00;
+  width: auto;
+  height: 2vh;
+  z-index: 100;
+}
+
+.graphic-container div img.image-01 {
+  width: 4vw;
+  height: auto;
+  object-fit: cover;
+  margin: 20px;
+  transform: translateX(70vw);
+  mix-blend-mode: difference;
+}
+
+.graphic-container div img.image-02 {
+  width: 7vw;
+  height: auto;
+  object-fit: cover;
+  margin: 10px;
+  transform: translateX(20vw);
+  mix-blend-mode: difference;
+}
+
+.graphic-container div img.image-03 {
+  width: 6vw;
+  height: auto;
+  object-fit: cover;
+  transform: translateX(10vw);
+  mix-blend-mode: difference;
+}
+
+.graphic-container div img.image-04 {
+  width: 7vw;
+  height: auto;
+  object-fit: cover;
+
+  transform: translateX(70vw);
+  mix-blend-mode: difference;
+}
+
+.graphic-container div img.image-05 {
+  width: 8vw;
+  height: auto;
+  object-fit: cover;
+
+  transform: translateX(80vw);
+  mix-blend-mode: difference;
+}
+
+.graphic-container div img.image-06 {
+  width: 9vw;
+  height: auto;
+  object-fit: cover;
+  margin: 10px;
+  transform: translateX(18vw);
+  mix-blend-mode: difference;
+}
+
+.graphic-container div img.image-07 {
+  width: 7vw;
+  height: auto;
+  object-fit: cover;
+
+  transform: translateX(52vw);
+  mix-blend-mode: difference;
+}
+
+.graphic-container div img.image-08 {
+  width: 8vw;
+  height: auto;
+  object-fit: cover;
+
+  transform: translateX(70vw);
+  mix-blend-mode: difference;
+}
+
+.graphic-container div img.image-09 {
+  width: 10vw;
+  height: auto;
+  object-fit: cover;
+  transform: translateX(10vw);
+  mix-blend-mode: difference;
+}
+
+.graphic-container div img.image-10 {
+  width: 10vw;
+  height: auto;
+  object-fit: cover;
+  transform: translateX(65vw);
+  mix-blend-mode: difference;
+}
+
+.graphic-container div img.image-11 {
+  width: 10vw;
+  height: auto;
+  object-fit: cover;
+  transform: translateX(60vw);
+  mix-blend-mode: difference;
+}
+
+.graphic-container div img.image-12 {
+  width: 15vw;
+  height: auto;
+  object-fit: cover;
+  transform: translateX(30vw);
+  mix-blend-mode: difference;
+}
+
+.graphic-container div img.image-13 {
+  width: 20vw;
+  height: auto;
+  object-fit: cover;
+  transform: translateX(60vw);
+  mix-blend-mode: difference;
+}
+
+.graphic-container div img.image-14 {
+  width: 10vw;
+  height: auto;
+  object-fit: cover;
+
+  transform: translateX(40vw);
+  mix-blend-mode: difference;
+}
+
+.graphic-container div img.image-15 {
+  width: 8vw;
+  height: auto;
+  object-fit: cover;
+
+  transform: translateX(15vw);
+  mix-blend-mode: difference;
+}
+
+.graphic-container div img.image-16 {
+  width: 10vw;
+  height: auto;
+  object-fit: cover;
+
+  transform: translateX(25vw);
+  mix-blend-mode: difference;
+}
+
+.graphic-container div img.image-17 {
+  width: 10vw;
+  height: auto;
+  object-fit: cover;
+
+  transform: translateX(175vw);
+  mix-blend-mode: difference;
+}
+
+.graphic-container div img.image-18 {
+  width: 8vw;
+  height: auto;
+  object-fit: cover;
+
+  transform: translateX(8vw);
+  mix-blend-mode: difference;
+}
+
+.graphic-container div img.image-19 {
+  width: 10vw;
+  height: auto;
+  object-fit: cover;
+
+  transform: translateX(70vw);
+  mix-blend-mode: difference;
+}
+.graphic-container div {
+  position: relative;
+  overflow: hidden;
+}
+
+.graphic-container div img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  cursor: pointer;
+}
+
+.graphic-container div .image-text {
+  background-color: #414141;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-30%, -50%);
+  opacity: 0;
+  color: #a9c2f9;
+  font-size: 2vh;
+  font-family: "GeistMono-Regular", sans-serif;
+  z-index: 1000;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+/*grafik container animation*/
+
+.graphic-container div:hover .image-text {
+  opacity: 1;
+  mix-blend-mode: difference;
+}
+.graphic-container .image-container .image-text {
+  color: #a9c2f9;
+  background-color: #fff;
+  transition: color 0.2s ease;
+}
+
+.graphic-container .image-container:hover .image-text {
+  color: #414141;
+  background-color: #fff;
+}
+
+#overlaytutorial {
+  z-index: 1000;
+  display: none;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(153, 153, 153, 0);
+  width: auto;
+  height: 100%;
+  opacity: 0.8;
+}
+#popuptutorial {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #ffffff;
+  width: 40vw; /* 화면 너비의 40%로 설정 */
+  height: 40vw; /* 화면 너비의 40%로 설정 */
+  max-width: 800px; /* 최대 너비 설정 */
+  max-height: 800px; /* 최대 높이 설정 */
+
+  z-index: 2000;
+}
+#popupclosetutorial {
+  float: right;
+  padding: 1vh;
+  cursor: pointer;
+}
+.popupcontenttutorial {
+  padding: 1vh;
+}
+#buttontutorial {
+  cursor: pointer;
+}
+
+/* 스크롤 바의 전체 스타일링 */
+::-webkit-scrollbar {
+  width: 1vh; /* 스크롤 바의 너비 */
+}
+
+/* 스크롤 바의 트랙 (바의 배경) 스타일링 */
+::-webkit-scrollbar-track {
+  background-color: transparent; /* 트랙의 색상 */
+}
+
+/* 스크롤 바 위에 마우스 오버 시 핸들 스타일링 */
+::-webkit-scrollbar-thumb:hover {
+  background-color: transparent; /* 마우스 오버 시의 핸들 색상 */
+}
+
+.game-selection-screen {
+  order: 2; /* 기존에는 1이었던 것을 2로 변경하여 graphic-container보다 뒤로 배치 */
+}
+
+.graphic-container {
+  order: 1; /* 기존에는 2이었던 것을 1로 변경하여 game-selection-screen보다 앞으로 배치 */
+}
+.video-img {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30vw;
+  height: auto;
+  z-index: 1000;
+}

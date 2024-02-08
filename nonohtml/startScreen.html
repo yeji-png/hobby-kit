@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../nonocss/starScreen.css" />
+    <title>Hobby Kit</title>
+  </head>
+  <body>
+    <div class="start-screen">
+      <button class="prev-btn" onclick="history.back()">
+        <img src="../nonographic/prev01.png" alt="Back" />
+      </button>
+
+      <button
+        class="game-selection-btn"
+        onmouseover="changeImage('game-selection-btn', '02')"
+        onmouseout="resetImage('game-selection-btn')"
+        onclick="window.location.href='../nonohtml/gameSelectionScreen.html'"
+      >
+        <img
+          id="gameBtnImg"
+          src="../nonographic/game-selection01.png"
+          alt="Game"
+        />
+      </button>
+
+      <button id="buttontutorial" class="tutorial-btn">
+        <img src="../nonographic/tutorial01.png" alt="Tutorial" />
+      </button>
+    </div>
+
+    <div class="tutorial-screen">
+      <div id="overlaytutorial">
+        <div id="popuptutorial">
+          <div class="popupcontrolstutorial">
+            <span id="popupclosetutorial">X</span>
+          </div>
+          <div class="popupcontenttutorial">
+            <img src="../nonogram/tutorialvideo.gif" class="video-img" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="../nonojs/main.js"></script>
+  </body>
+</html>
